@@ -22,7 +22,7 @@ const Header = () => {
           Saad Rana{" "}
         </Link>
         <div className={styles.icons}>
-          <a href="https://github.com/saadrana" target="_blank">
+          <a href="https://github.com/saadrana">
             <FontAwesomeIcon icon={["fab", "github"]} className={styles.icon} />
           </a>
         </div>

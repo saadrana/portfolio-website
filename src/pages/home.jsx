@@ -123,16 +123,16 @@ const Home = () => {
                   />
                 </div>
                 <div className={styles.comets} data-depth="0.2">
-                  <img src={cometImg} className={styles.comet1}></img>
+                  <img src={cometImg} className={styles.comet1} alt=""></img>
                 </div>
                 <div className={styles.comets} data-depth="0.3">
-                  <img src={cometImg} className={styles.comet2}></img>
+                  <img src={cometImg} className={styles.comet2} alt=""></img>
                 </div>
                 <div className={styles.comets} data-depth="0.7">
-                  <img src={cometImg} className={styles.comet3}></img>
+                  <img src={cometImg} className={styles.comet3} alt=""></img>
                 </div>
                 <div className={styles.comets} data-depth="0.8">
-                  <img src={cometImg} className={styles.comet4}></img>
+                  <img src={cometImg} className={styles.comet4} alt=""></img>
                 </div>
               </div>
             </div>
@@ -187,7 +187,7 @@ const Home = () => {
                 </Link>
               </div>
             </div>
-            <a className={`${styles.image} ${styles.imgAbout}`}>
+            <Link className={`${styles.image} ${styles.imgAbout}`} to="/about">
               <div className={styles.imageOver}>
                 <div className={styles.imageCover}></div>
                 <div className={styles.imageCover}></div>
@@ -197,7 +197,7 @@ const Home = () => {
                   <p>02</p>
                 </div>
                 */}
-            </a>
+            </Link>
           </section>
           <section className={"section"}>
             <div className={styles.title}>
@@ -216,7 +216,7 @@ const Home = () => {
                 </li>
                 <li>
                   <div className={styles.icons}>
-                    <a href="https://github.com/saadrana" target="_blank">
+                    <a href="https://github.com/saadrana">
                       <FontAwesomeIcon
                         icon={["fab", "github"]}
                         className={styles.icon}
