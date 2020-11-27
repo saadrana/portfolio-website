@@ -1,0 +1,184 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px 40px 0;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+header .wrap {
+  display: flex;
+  position: relative;
+}
+
+header .name {
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 1000;
+  transition: 0.3s;
+  text-decoration: none;
+  color: white;
+}
+
+header .globalNav {
+  background-image: linear-gradient(to right, #100e17, #e52e71 55%, #ff8a00);
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transform: translate3d(0, -100%, 0);
+  z-index: -100;
+
+  &Open {
+    background-image: linear-gradient(to right, #100e17, #e52e71 55%, #ff8a00);
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transform: translate3d(0, -100%, 0);
+    z-index: -100;
+    transform: translate3d(0, 0, 0);
+
+    & a {
+      transform: translate3d(0, 0, 0) !important;
+    }
+  }
+}
+
+header .navList {
+  text-align: center;
+
+  & li:first-child {
+    margin-top: 0;
+  }
+
+  & li {
+    margin-top: 4rem;
+    position: relative;
+    padding: 0 2rem;
+    overflow: hidden;
+  }
+
+  & a {
+    display: inline-block;
+    color: #fff;
+    font-size: 6rem;
+    line-height: 1;
+    letter-spacing: 0.1rem;
+    font-family: Montserrat;
+    font-weight: normal;
+    text-shadow: 0 10px 30px rgba(2, 11, 22, 0.2);
+    transform: translate3d(0, 100%, 0);
+    transition: 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s;
+  }
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+header .icons {
+  display: flex;
+  margin-right: 3rem;
+  margin-left: auto;
+}
+
+header .icon {
+  color: white;
+  font-size: 28px;
+  padding-bottom: 4px;
+}
+
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+header .menuIcon {
+  position: relative;
+  width: 50px;
+  height: 22px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+
+  &:after {
+    top: 0;
+    content: "";
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    position: absolute;
+    right: 0;
+    transition: 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  }
+
+  &:before {
+    bottom: 0;
+    content: "";
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    position: absolute;
+    right: 0;
+    transition: 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  }
+
+  &Open {
+    position: relative;
+    width: 50px;
+    height: 22px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+
+    &:before {
+      bottom: 50%;
+      content: "";
+      width: 100%;
+      height: 3px;
+      background: #fff;
+      position: absolute;
+      right: 0;
+      transition: 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+      transform: rotate(-45deg) translate3d(0, 50%, 0);
+    }
+
+    &:after {
+      top: 50%;
+      content: "";
+      width: 100%;
+      height: 3px;
+      background: #fff;
+      position: absolute;
+      right: 0;
+      transition: 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+      transform: rotate(45deg) translate3d(0, -50%, 0);
+    }
+  }
+}
