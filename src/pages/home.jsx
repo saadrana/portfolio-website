@@ -1,6 +1,6 @@
 import fullpage from "fullpage.js";
 
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./css/home.module.css";
 
@@ -15,6 +15,7 @@ import cometImg from "../images/comet.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
+
 library.add(fab);
 
 const Home = () => {
@@ -45,11 +46,15 @@ const Home = () => {
   const red7 = useRef();
   const red8 = useRef();
 
+  const [loaded, setLoaded] = useState(false);
+
   function transition(origin, destination, direction) {
     console.log(origin);
   }
 
   useEffect(() => {
+    setLoaded(true);
+
     barba.init({
       transitions: [
         {
@@ -75,6 +80,7 @@ const Home = () => {
       navigationPosition: "left",
       anchors: ["home", "projects", "aboutMe", "contact"],
       //navigationTooltips: ["Home", "Projects", "About", "Contact"],
+      animateAnchor: false,
       onLeave: (origin, destination, direction) => {
         transition(origin, destination, direction);
       },
@@ -89,7 +95,10 @@ const Home = () => {
   }, []);
 
   return (
-    <main data-barba="wrapper">
+    <main
+      data-barba="wrapper"
+      style={{ visibility: loaded ? "visible" : "hidden" }}
+    >
       <div data-barba="container" data-barba-namespace="index">
         <div id="fullpage" ref={fullPage}>
           <section className={"section"}>
@@ -134,6 +143,9 @@ const Home = () => {
                 <div className={styles.comets} data-depth="0.8">
                   <img src={cometImg} className={styles.comet4} alt=""></img>
                 </div>
+                <div className={styles.comets} data-depth="0.3">
+                  <img src={cometImg} className={styles.comet5} alt=""></img>
+                </div>
               </div>
             </div>
           </section>
@@ -164,11 +176,9 @@ const Home = () => {
                 <div className={styles.imageCover}></div>
                 <div className={styles.imageCover}></div>
               </div>
-              {/*
-                <div className={styles.pageNum}>
-                  <p>01</p>
-                </div>
-                */}
+              <div className={styles.pageNum}>
+                <p>01</p>
+              </div>
             </a>
           </section>
           <section className={"section"}>
@@ -192,11 +202,9 @@ const Home = () => {
                 <div className={styles.imageCover}></div>
                 <div className={styles.imageCover}></div>
               </div>
-              {/*
-                <div className={styles.pageNum}>
-                  <p>02</p>
-                </div>
-                */}
+              <div className={styles.pageNum}>
+                <p>02</p>
+              </div>
             </Link>
           </section>
           <section className={"section"}>
@@ -222,6 +230,12 @@ const Home = () => {
                         className={styles.icon}
                       />
                     </a>
+                    <a href="https://github.com/saadrana">
+                      <FontAwesomeIcon
+                        icon={["fab", "linkedin"]}
+                        className={styles.icon}
+                      />
+                    </a>
                   </div>
                 </li>
               </ul>
@@ -231,11 +245,9 @@ const Home = () => {
                 <div className={styles.imageCover}></div>
                 <div className={styles.imageCover}></div>
               </div>
-              {/*
-                <div className={styles.pageNum}>
-                  <p>03</p>
-                </div>
-                */}
+              <div className={styles.pageNum}>
+                <p>03</p>
+              </div>
             </div>
           </section>
         </div>

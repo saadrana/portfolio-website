@@ -146,6 +146,7 @@
   text-shadow: 0 10px 15px rgba(2, 11, 22, 0.2);
   background-image: -webkit-gradient(linear, left top, right top, from(#e52e71), to(#ff8a00));
   background-image: linear-gradient(90deg, #e52e71, #ff8a00);
+  background-clip: text;
   -webkit-background-clip: text;
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -199,8 +200,8 @@
   vertical-align: middle;
   width: 30%;
   position: absolute;
-  top: 80%;
-  left: -50%;
+  top: 70%;
+  left: -30%;
 }
 
 .sideGraphic .comets .comet4 {
@@ -210,6 +211,15 @@
   position: absolute;
   top: 65%;
   left: 50%;
+}
+
+.sideGraphic .comets .comet5 {
+  height: auto;
+  vertical-align: middle;
+  width: 30%;
+  position: absolute;
+  top: -25%;
+  left: -70%;
 }
 
 .border {
@@ -380,6 +390,18 @@ p {
   letter-spacing: 0.1em;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+}
+
+.icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 3rem;
+  margin-left: 0;
+}
+
+.icons a {
+  margin: 0 30px 0 0;
 }
 
 .icon {

@@ -6,14 +6,18 @@ import {
   Route,
 } from "react-router-dom";
 
-
-
-
 import Header from "./components/header"
 import Home from "./pages/home"
 import About from "./pages/about"
 
-function App() {
+
+const App = () => {
+  /*const [loaded, setLoaded] = useState(false);
+
+  useEffect(()=>{
+    setLoaded(true)
+  },[])*/
+
   return (
     <Router>
       <div className="App">
@@ -32,4 +36,6 @@ function App() {
   );
 }
 
+
 export default App;
+

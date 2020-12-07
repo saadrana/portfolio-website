@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./css/header.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fab } from "@fortawesome/free-brands-svg-icons";
@@ -25,6 +25,12 @@ const Header = () => {
           <a href="https://github.com/saadrana">
             <FontAwesomeIcon icon={["fab", "github"]} className={styles.icon} />
           </a>
+          <a href="https://www.linkedin.com/in/saad-rana/">
+            <FontAwesomeIcon
+              icon={["fab", "linkedin"]}
+              className={styles.icon}
+            />
+          </a>
         </div>
         <button
           className={`${open ? styles.menuIconOpen : styles.menuIcon}`}
@@ -34,20 +40,22 @@ const Header = () => {
       <nav className={`${open ? styles.globalNavOpen : styles.globalNav}`}>
         <ul className={styles.navList}>
           <li>
-            <a href="/#home" onClick={closeMenu}>
+            <Link to="/#home" onClick={closeMenu}>
               HOME
-            </a>
+            </Link>
           </li>
           <li>
             <a href="https://github.com/saadrana">PROJECTS</a>
           </li>
           <li>
-            <Link to="/about">ABOUT ME</Link>
+            <Link to="/about" onClick={closeMenu}>
+              ABOUT ME
+            </Link>
           </li>
           <li>
-            <a href="/#contact" onClick={closeMenu}>
+            <Link to="/#contact" onClick={closeMenu}>
               CONTACT
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

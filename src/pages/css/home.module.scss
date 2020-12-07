@@ -181,8 +181,8 @@
         vertical-align: middle;
         width: 30%;
         position: absolute;
-        top: 80%;
-        left: -50%;
+        top: 70%;
+        left: -30%;
       }
       &4 {
         height: auto;
@@ -191,6 +191,14 @@
         position: absolute;
         top: 65%;
         left: 50%;
+      }
+      &5 {
+        height: auto;
+        vertical-align: middle;
+        width: 30%;
+        position: absolute;
+        top: -25%;
+        left: -70%;
       }
     }
   }
@@ -351,6 +359,16 @@ p {
     line-height: 1.5;
     letter-spacing: 0.1em;
     transition: 0.3s;
+  }
+}
+
+.icons {
+  display: flex;
+  margin-right: 3rem;
+  margin-left: 0;
+
+  & a {
+    margin: 0 30px 0 0;
   }
 }
 

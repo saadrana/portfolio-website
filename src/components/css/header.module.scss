@@ -97,6 +97,10 @@ header .icons {
   display: flex;
   margin-right: 3rem;
   margin-left: auto;
+
+  & a {
+    margin: 0 15px 0 15px;
+  }
 }
 
 header .icon {
