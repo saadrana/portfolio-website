@@ -1,6 +1,6 @@
 import fullpage from "fullpage.js";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./css/home.module.css";
 
@@ -36,31 +36,119 @@ const Home = () => {
   const red3 = useRef();
   const red4 = useRef();
   const projectsText = useRef();
+  const projectsBtn = useRef();
 
   const about = useRef();
   const red5 = useRef();
   const red6 = useRef();
   const aboutText = useRef();
+  const aboutBtn = useRef();
 
   const contact = useRef();
   const red7 = useRef();
   const red8 = useRef();
+  const contactBtn = useRef();
 
-  const [loaded, setLoaded] = useState(false);
+  //const [loaded, setLoaded] = useState(false);
 
-  function transition(origin, destination, direction) {
-    console.log(origin);
-  }
+  const transition = (origin, destination, direction) => {
+    if (origin.anchor === "home") {
+      let tl = gsap.timeline({ defaults: { duration: 0.6 } });
+      tl.fromTo(name.current, { translateX: 0 }, { translateX: -500 })
+        .fromTo(
+          red1.current,
+          { translateX: 0 },
+          { translateX: -500, duration: 0.1 }
+        )
+        .fromTo(
+          red2.current,
+          { translateX: 0 },
+          { translateX: -500, duration: 0.1 }
+        )
+        .fromTo(
+          titles.current,
+          { translateX: 0 },
+          { translateX: -500 },
+          "+=0.1"
+        )
+        .fromTo(
+          portfolio.current,
+          { translateX: 0 },
+          { translateX: 1000 },
+          "-=1.2"
+        )
+        .fromTo(moon.current, { translateX: 0 }, { translateX: 1000 }, "-=1.2");
+    }
 
-  useEffect(() => {
-    setLoaded(true);
+    if (destination.anchor === "home") {
+      let tl = gsap.timeline({ defaults: { duration: 0.6 } });
+      tl.fromTo(name.current, { translateX: -500 }, { translateX: 0 })
+        .fromTo(
+          red1.current,
+          { translateX: -500 },
+          { translateX: 0, duration: 0.1 }
+        )
+        .fromTo(
+          red2.current,
+          { translateX: -500 },
+          { translateX: 0, duration: 0.1 }
+        )
+        .fromTo(
+          titles.current,
+          { translateX: -500 },
+          { translateX: 0 },
+          "+=0.1"
+        )
+        .fromTo(
+          portfolio.current,
+          { translateX: 1000 },
+          { translateX: 0 },
+          "-=1.2"
+        )
+        .fromTo(moon.current, { translateX: 1000 }, { translateX: 0 }, "-=1.2");
+    } else if (destination.anchor === "projects") {
+      let tl = gsap.timeline({ defaults: { duration: 0.6 } });
+      tl.from(projects.current, { translateX: -500 })
+        .from(red3.current, { translateX: -500, duration: 0.1 })
+        .from(red4.current, { translateX: -500, duration: 0.1 })
+        .from(projectsText.current, { translateX: -500 }, "+=0.1")
+        .from(projectsBtn.current, { translateX: -500 }, "+=0.1");
+    } else if (destination.anchor === "about") {
+      let tl = gsap.timeline({ defaults: { duration: 0.6 } });
+      tl.from(about.current, { translateX: -500 })
+        .from(red5.current, { translateX: -500, duration: 0.1 })
+        .from(red6.current, { translateX: -500, duration: 0.1 })
+        .from(aboutText.current, { translateX: -500 }, "+=0.1")
+        .from(aboutBtn.current, { translateX: -500 }, "+=0.1");
+    } else if (destination.anchor === "contact") {
+      let tl = gsap.timeline({ defaults: { duration: 0.6 } });
+      tl.from(contact.current, { translateX: -500 })
+        .from(red7.current, { translateX: -500, duration: 0.1 })
+        .from(red8.current, { translateX: -500, duration: 0.1 })
+        .from(contactBtn.current, { translateX: -500 }, "+=0.1");
+    }
+  };
+
+  useLayoutEffect(() => {
+    const fullpage_api = fullpage(fullPage.current, {
+      //options here
+      autoScrolling: true,
+      navigation: true,
+      navigationPosition: "left",
+      anchors: ["home", "projects", "about", "contact"],
+      //navigationTooltips: ["Home", "Projects", "About", "Contact"],
+      animateAnchor: false,
+      onLeave: (origin, destination, direction) => {
+        transition(origin, destination, direction);
+      },
+    });
 
     barba.init({
       transitions: [
         {
+          name: "Opening",
           once() {
             let tl = gsap.timeline({ defaults: { duration: 0.6 } });
-
             tl.from(loader.current, { y: 0, duration: 0.7 })
               .from(name.current, { translateX: -500 })
               .from(red1.current, { translateX: -500, duration: 0.1 })
@@ -70,34 +158,37 @@ const Home = () => {
               .from(moon.current, { translateX: 1000 }, "-=1.2");
           },
         },
+        {
+          name: "amazing transition",
+          from: {
+            namespace: ["index"],
+          },
+          to: {
+            namespace: ["about"],
+          },
+          enter(data) {
+            console.log("wow");
+          },
+        },
       ],
     });
-
-    const fullpage_api = fullpage(fullPage.current, {
-      //options here
-      autoScrolling: true,
-      navigation: true,
-      navigationPosition: "left",
-      anchors: ["home", "projects", "aboutMe", "contact"],
-      //navigationTooltips: ["Home", "Projects", "About", "Contact"],
-      animateAnchor: false,
-      onLeave: (origin, destination, direction) => {
-        transition(origin, destination, direction);
-      },
-    });
-
-    new Parallax(scene.current);
-    new Parallax(stars.current);
 
     return () => {
       fullpage_api.destroy("all");
     };
   }, []);
 
+  useEffect(() => {
+    //setLoaded(true);
+
+    new Parallax(scene.current);
+    new Parallax(stars.current);
+  }, []);
+
   return (
     <main
       data-barba="wrapper"
-      style={{ visibility: loaded ? "visible" : "hidden" }}
+      //style={{ visibility: loaded ? "visible" : "hidden" }}
     >
       <div data-barba="container" data-barba-namespace="index">
         <div id="fullpage" ref={fullPage}>
@@ -162,7 +253,7 @@ const Home = () => {
                 Projects ranging from web apps<br></br>to neural networks can be
                 viewed<br></br>on my github
               </p>
-              <div className={styles.btnWrap}>
+              <div className={styles.btnWrap} ref={projectsBtn}>
                 <a className={styles.btn} href="https://github.com/saadrana">
                   Github
                 </a>
@@ -191,7 +282,7 @@ const Home = () => {
                 <span ref={red6}></span>
               </div>
               <p className={styles.sideText} ref={aboutText}></p>
-              <div className={styles.btnWrap}>
+              <div className={styles.btnWrap} ref={aboutBtn}>
                 <Link className={styles.btn} to="/about">
                   Show me more
                 </Link>
@@ -216,7 +307,7 @@ const Home = () => {
                 <span ref={red7}></span>
                 <span ref={red8}></span>
               </div>
-              <ul>
+              <ul ref={contactBtn}>
                 <li>
                   <a href="mailto:saad-rana@outlook.com">
                     saad-rana@outlook.com
