@@ -1,9 +1,11 @@
+$back-color: #191624;
+
 header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 40px 40px 0;
+  padding: 40px 40px 10px;
   z-index: 1000;
   box-sizing: border-box;
 }
@@ -17,13 +19,22 @@ header .name {
   letter-spacing: 0.1em;
   position: relative;
   z-index: 1000;
-  transition: 0.3s;
+  transition: 0.2s;
   text-decoration: none;
   color: white;
+
+  &:hover {
+    color: rgb(185, 185, 185);
+  }
 }
 
 header .globalNav {
-  background-image: linear-gradient(to right, #100e17, #e52e71 55%, #ff8a00);
+  background-image: linear-gradient(
+    to right,
+    $back-color,
+    #e52e71 55%,
+    #ff8a00
+  );
   width: 100%;
   height: 100vh;
   position: fixed;
@@ -37,7 +48,12 @@ header .globalNav {
   z-index: -100;
 
   &Open {
-    background-image: linear-gradient(to right, #100e17, #e52e71 55%, #ff8a00);
+    background-image: linear-gradient(
+      to right,
+      $back-color,
+      #e52e71 55%,
+      #ff8a00
+    );
     width: 100%;
     height: 100vh;
     position: fixed;
@@ -100,6 +116,7 @@ header .icons {
 
   & a {
     margin: 0 15px 0 15px;
+    transition: 0.2s;
   }
 }
 
@@ -107,6 +124,11 @@ header .icon {
   color: white;
   font-size: 28px;
   padding-bottom: 4px;
+  transition: 0.2s;
+
+  &:hover {
+    color: rgb(185, 185, 185);
+  }
 }
 
 @mixin tablet {

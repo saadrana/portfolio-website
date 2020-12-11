@@ -80,7 +80,7 @@
 .scrollDown {
   position: fixed;
   font-size: 0.7rem;
-  bottom: 60px;
+  bottom: 80px;
   left: 40px;
   line-height: 1;
   letter-spacing: 0.3em;
@@ -105,18 +105,29 @@
 }
 
 .backArrow {
-  position: fixed;
-  top: 120px;
-  left: 40px;
   display: block;
   height: 40px;
   width: 60px;
-  transition: 0.5s;
   overflow: hidden;
   color: #fff;
   z-index: 300;
   background: url(../../images/arrow.svg) no-repeat center;
   background-size: cover;
+
+  &Wrap {
+    position: fixed;
+    top: 120px;
+    left: 40px;
+    overflow: hidden;
+    height: 40px;
+    width: 60px;
+    transition: 0.6s;
+
+    &:hover {
+      left: 30px;
+      transition: 0.6s;
+    }
+  }
 }
 
 .footer {
@@ -265,4 +276,27 @@ p {
   line-height: 2;
   word-wrap: break-word;
   white-space: normal;
+}
+
+.btnWrap {
+  margin-top: 1.6rem;
+
+  & .btn {
+    display: inline-block;
+    font-size: 1.2rem;
+    color: #fff;
+    background: linear-gradient(90deg, #e52e71, #ff8a00);
+    line-height: 1;
+    font-weight: bold;
+    padding: 18px 32px;
+    border-radius: 50px;
+    transition: 0.3s;
+    letter-spacing: 0.1em;
+    transition: 0.2s;
+
+    &:hover {
+      transform: translateY(-3px);
+      transition: 0.2s;
+    }
+  }
 }

@@ -1,7 +1,9 @@
+$back-color: #191624;
+
 .scrollDown {
   position: fixed;
   font-size: 0.7rem;
-  bottom: 60px;
+  bottom: 80px;
   left: 40px;
   line-height: 1;
   letter-spacing: 0.3em;
@@ -31,7 +33,7 @@
   height: 100vh;
   top: 0;
   left: 0;
-  background: #100e17;
+  background: $back-color;
   z-index: -200;
 }
 
@@ -231,7 +233,7 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background: #100e17;
+  background: $back-color;
   z-index: 99999;
   transform: translate3d(0, 100%, 0);
 }
@@ -297,11 +299,7 @@ p {
     height: 100%;
     overflow: hidden;
     position: relative;
-    background: linear-gradient(
-      to right,
-      rgba(229, 46, 113, 0.08),
-      rgba(255, 138, 0, 0.08)
-    );
+
     & .imageCover {
       position: absolute;
       width: 100%;
@@ -313,7 +311,7 @@ p {
     }
 
     & .imageCover:last-child {
-      background: #100e17;
+      background: $back-color;
     }
   }
   & .pageNum {
@@ -347,6 +345,12 @@ p {
     border-radius: 50px;
     transition: 0.3s;
     letter-spacing: 0.1em;
+    transition: 0.2s;
+
+    &:hover {
+      transform: translateY(-3px);
+      transition: 0.2s;
+    }
   }
 }
 
@@ -358,7 +362,11 @@ p {
     font-size: 1.2rem;
     line-height: 1.5;
     letter-spacing: 0.1em;
-    transition: 0.3s;
+    transition: 0.2s;
+
+    &:hover {
+      color: rgb(185, 185, 185);
+    }
   }
 }
 
@@ -385,6 +393,7 @@ ul {
   background: url(../../images/dima-pechurin-JUbjYFvCv00-unsplash.jpg) no-repeat
     center;
   background-size: cover;
+  cursor: default;
 }
 
 .imgAbout {
@@ -397,4 +406,10 @@ ul {
   background: url(../../images/dhaval-parmar-dnPniNPUe4o-unsplash.jpg) no-repeat
     center;
   background-size: cover;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
 }

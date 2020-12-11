@@ -86,7 +86,7 @@
 .scrollDown {
   position: fixed;
   font-size: 0.7rem;
-  bottom: 60px;
+  bottom: 80px;
   left: 40px;
   line-height: 1;
   letter-spacing: 0.3em;
@@ -114,19 +114,31 @@
 }
 
 .backArrow {
-  position: fixed;
-  top: 120px;
-  left: 40px;
   display: block;
   height: 40px;
   width: 60px;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
   overflow: hidden;
   color: #fff;
   z-index: 300;
   background: url(../../images/arrow.svg) no-repeat center;
   background-size: cover;
+}
+
+.backArrowWrap {
+  position: fixed;
+  top: 120px;
+  left: 40px;
+  overflow: hidden;
+  height: 40px;
+  width: 60px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.backArrowWrap:hover {
+  left: 30px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
 }
 
 .footer {
@@ -300,5 +312,33 @@ p {
   line-height: 2;
   word-wrap: break-word;
   white-space: normal;
+}
+
+.btnWrap {
+  margin-top: 1.6rem;
+}
+
+.btnWrap .btn {
+  display: inline-block;
+  font-size: 1.2rem;
+  color: #fff;
+  background: -webkit-gradient(linear, left top, right top, from(#e52e71), to(#ff8a00));
+  background: linear-gradient(90deg, #e52e71, #ff8a00);
+  line-height: 1;
+  font-weight: bold;
+  padding: 18px 32px;
+  border-radius: 50px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  letter-spacing: 0.1em;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.btnWrap .btn:hover {
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 /*# sourceMappingURL=about.module.css.map */

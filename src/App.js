@@ -6,22 +6,22 @@ import {
   Route,
 } from "react-router-dom";
 
+import {useContext} from "react"
+
 import Header from "./components/header"
 import Home from "./pages/home"
 import About from "./pages/about"
+import Refs from "./global/Refs"
 
 
 const App = () => {
-  /*const [loaded, setLoaded] = useState(false);
 
-  useEffect(()=>{
-    setLoaded(true)
-  },[])*/
+  const refs = useContext(Refs)
 
   return (
     <Router>
       <div className="App">
-        <Header/>
+        <Header ref={refs.header}/>
         <Switch>
           <Route path="/about">
             <About/>
@@ -32,7 +32,6 @@ const App = () => {
         </Switch>
       </div>
     </Router>
-    
   );
 }
 

@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useImperativeHandle, forwardRef, useRef } from "react";
 import styles from "./css/header.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 library.add(fab);
 
-const Header = () => {
+const Header = (props, ref) => {
   const [open, setOpen] = useState(false);
   const toggleMenu = () => {
     setOpen(!open);
@@ -15,8 +15,23 @@ const Header = () => {
     setOpen(false);
   };
 
+  const header = useRef();
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      dark() {
+        header.current.style.backgroundColor = "rgba(0,0,0,0.5)";
+      },
+      light() {
+        header.current.style.backgroundColor = "none";
+      },
+    }),
+    []
+  );
+
   return (
-    <header>
+    <header ref={header}>
       <div className={styles.wrap}>
         <Link to="/" className={styles.name}>
           Saad Rana{" "}
@@ -63,4 +78,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default forwardRef(Header);
