@@ -130,16 +130,18 @@ header .icons {
   display: flex;
   margin-right: 3rem;
   margin-left: auto;
+  color: white;
 }
 
 header .icons a {
   margin: 0 15px 0 15px;
   -webkit-transition: 0.2s;
   transition: 0.2s;
+  color: inherit;
 }
 
 header .icon {
-  color: white;
+  color: inherit;
   font-size: 28px;
   padding-bottom: 4px;
   -webkit-transition: 0.2s;
@@ -165,7 +167,7 @@ header .menuIcon:after {
   content: "";
   width: 100%;
   height: 3px;
-  background: #fff;
+  background: white;
   position: absolute;
   right: 0;
   -webkit-transition: 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
@@ -177,7 +179,7 @@ header .menuIcon:before {
   content: "";
   width: 100%;
   height: 3px;
-  background: #fff;
+  background: white;
   position: absolute;
   right: 0;
   -webkit-transition: 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);

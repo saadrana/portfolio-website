@@ -119,9 +119,8 @@
   width: 60px;
   overflow: hidden;
   color: #fff;
-  z-index: 300;
+  z-index: 100;
   background: url(../../images/arrow.svg) no-repeat center;
-  background-size: cover;
 }
 
 .backArrowWrap {
@@ -148,7 +147,7 @@
   background-image: -webkit-gradient(linear, left top, right top, from(#100e17), color-stop(55%, #e52e71), to(#ff8a00));
   background-image: linear-gradient(to right, #100e17, #e52e71 55%, #ff8a00);
   position: relative;
-  z-index: 100;
+  z-index: 200;
 }
 
 .footer a {
@@ -166,6 +165,7 @@
 }
 
 .wrapper {
+  margin-top: 10rem;
   margin-bottom: 20rem;
   position: relative;
   z-index: 200;

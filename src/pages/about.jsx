@@ -1,15 +1,20 @@
-import { useRef, useLayoutEffect } from "react";
+import { useRef, useLayoutEffect, useEffect, useContext } from "react";
 import styles from "./css/about.module.css";
 import { Link } from "react-router-dom";
-import gsap from "gsap";
-//import Refs from "../global/Refs";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Refs from "../global/Refs";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
   const scoutBtn = useRef();
   const arrow = useRef();
   const scroll = useRef();
+  const sec1 = useRef();
+  const sec2 = useRef();
 
-  //const refs = useContext(Refs);
+  const refs = useContext(Refs);
 
   useLayoutEffect(() => {
     let tl = gsap.timeline({ defaults: { duration: 0.5 } });
@@ -24,9 +29,26 @@ const About = () => {
       .from(scroll.current, { translateY: 200 }, "<");
   }, []);
 
+  useEffect(() => {
+    ScrollTrigger.create({
+      trigger: sec2.current,
+      start: "top top+=250",
+      onToggle: (self) => {
+        if (self.direction === 1) {
+          refs.header.current.dark();
+          arrow.current.style.visibility = "hidden";
+        } else if (self.direction === -1) {
+          refs.header.current.light();
+          arrow.current.style.visibility = "visible";
+        }
+      },
+    });
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <main>
-      <div className={styles.topPage}>
+      <div className={styles.topPage} ref={sec1}>
         <div className={styles.topPageInner}>
           <div className={styles.backArrowWrap}>
             <Link className={styles.backArrow} to="/#about" ref={arrow}></Link>
@@ -48,8 +70,8 @@ const About = () => {
           <div className={`${styles.image} ${styles.imgAbout}`}></div>
         </div>
       </div>
-      <section className={styles.wrapper}>
-        <div className={styles.container}>
+      <section className={styles.wrapper} ref={sec2}>
+        <div className={styles.containerTop}>
           <div className={`${styles.text} ${styles.textTop}`}>
             <p className={styles.headingNum}>01</p>
             <div

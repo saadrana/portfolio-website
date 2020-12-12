@@ -110,9 +110,8 @@
   width: 60px;
   overflow: hidden;
   color: #fff;
-  z-index: 300;
+  z-index: 100;
   background: url(../../images/arrow.svg) no-repeat center;
-  background-size: cover;
 
   &Wrap {
     position: fixed;
@@ -136,7 +135,7 @@
   text-align: center;
   background-image: linear-gradient(to right, #100e17, #e52e71 55%, #ff8a00);
   position: relative;
-  z-index: 100;
+  z-index: 200;
 
   & a {
     display: block;
@@ -153,6 +152,7 @@
 }
 
 .wrapper {
+  margin-top: 10rem;
   margin-bottom: 20rem;
   position: relative;
   z-index: 200;

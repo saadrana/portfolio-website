@@ -47,6 +47,13 @@ const Home = () => {
   const img2 = useRef();
   const img3 = useRef();
 
+  const cover1 = useRef();
+  const cover2 = useRef();
+  const cover3 = useRef();
+  const cover4 = useRef();
+  const cover5 = useRef();
+  const cover6 = useRef();
+
   const scroll = useRef();
 
   const projects = useRef();
@@ -186,14 +193,27 @@ const Home = () => {
         .from(
           img1.current,
           {
-            scaleX: 0.9,
-            scaleY: 0.9,
-            translateX: 50,
+            scaleX: 0.85,
+            scaleY: 0.85,
+            translateX: "10%",
             duration: 1.3,
           },
           0.2
         )
-        .from(num1.current, { translateY: 120, duration: 0.5 }, ">-0.8")
+        .fromTo(
+          cover2.current,
+          { width: "100%" },
+          { width: "0%", ease: "power2.out", duration: 0.5 },
+          "<"
+        )
+        .fromTo(
+          cover1.current,
+          { width: "100%" },
+          { width: "0%", ease: "power1.out" },
+          "<"
+        )
+
+        .from(num1.current, { translateY: 120, duration: 0.5 }, ">")
         .to(scroll.current, { translateY: 200 }, "<");
     } else if (destination.anchor === "about") {
       let tl = gsap.timeline({ defaults: { duration: 0.9 } });
@@ -205,14 +225,27 @@ const Home = () => {
         .from(
           img2.current,
           {
-            scaleX: 0.9,
-            scaleY: 0.9,
-            translateX: 50,
+            scaleX: 0.85,
+            scaleY: 0.85,
+            translateX: "10%",
             duration: 1.3,
           },
           0.2
         )
-        .from(num2.current, { translateY: 120, duration: 0.5 }, ">-0.8")
+        .fromTo(
+          cover4.current,
+          { width: "100%" },
+          { width: "0%", ease: "power2.out", duration: 0.5 },
+          "<"
+        )
+        .fromTo(
+          cover3.current,
+          { width: "100%" },
+          { width: "0%", ease: "power1.out" },
+          "<"
+        )
+
+        .from(num2.current, { translateY: 120, duration: 0.5 }, ">")
         .to(scroll.current, { translateY: 200 }, "<");
     } else if (destination.anchor === "contact") {
       let tl = gsap.timeline({ defaults: { duration: 0.9 } });
@@ -223,14 +256,27 @@ const Home = () => {
         .from(
           img3.current,
           {
-            scaleX: 0.9,
-            scaleY: 0.9,
-            translateX: 50,
+            scaleX: 0.85,
+            scaleY: 0.85,
+            translateX: "10%",
             duration: 1.3,
           },
           0.2
         )
-        .from(num3.current, { translateY: 120, duration: 0.5 }, ">-0.8")
+        .fromTo(
+          cover6.current,
+          { width: "100%" },
+          { width: "0%", ease: "power2.out", duration: 0.5 },
+          "<"
+        )
+        .fromTo(
+          cover5.current,
+          { width: "100%" },
+          { width: "0%", ease: "power1.out" },
+          "<"
+        )
+
+        .from(num3.current, { translateY: 120, duration: 0.5 }, ">")
         .to(scroll.current, { translateY: 200 }, "<");
     }
   };
@@ -375,8 +421,8 @@ const Home = () => {
             ref={img1}
           >
             <div className={styles.imageOver}>
-              <div className={styles.imageCover}></div>
-              <div className={styles.imageCover}></div>
+              <div className={styles.imageCover} ref={cover1}></div>
+              <div className={styles.imageCover} ref={cover2}></div>
             </div>
             <div className={styles.pageNum}>
               <p ref={num1}>01</p>
@@ -407,8 +453,8 @@ const Home = () => {
             ref={img2}
           >
             <div className={styles.imageOver}>
-              <div className={styles.imageCover}></div>
-              <div className={styles.imageCover}></div>
+              <div className={styles.imageCover} ref={cover3}></div>
+              <div className={styles.imageCover} ref={cover4}></div>
             </div>
             <div className={styles.pageNum}>
               <p ref={num2}>02</p>
@@ -448,8 +494,8 @@ const Home = () => {
           </div>
           <button className={`${styles.image} ${styles.imgContact}`} ref={img3}>
             <div className={styles.imageOver}>
-              <div className={styles.imageCover}></div>
-              <div className={styles.imageCover}></div>
+              <div className={styles.imageCover} ref={cover5}></div>
+              <div className={styles.imageCover} ref={cover6}></div>
             </div>
             <div className={styles.pageNum}>
               <p ref={num3}>03</p>

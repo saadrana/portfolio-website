@@ -24,7 +24,7 @@ const Header = (props, ref) => {
         header.current.style.backgroundColor = "rgba(0,0,0,0.5)";
       },
       light() {
-        header.current.style.backgroundColor = "none";
+        header.current.style.backgroundColor = "rgba(0,0,0,0)";
       },
     }),
     []
