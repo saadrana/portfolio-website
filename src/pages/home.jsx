@@ -203,7 +203,7 @@ const Home = () => {
         .fromTo(
           cover2.current,
           { width: "100%" },
-          { width: "0%", ease: "power2.out", duration: 0.5 },
+          { width: "0%", ease: "power2.out" },
           "<"
         )
         .fromTo(
@@ -235,7 +235,7 @@ const Home = () => {
         .fromTo(
           cover4.current,
           { width: "100%" },
-          { width: "0%", ease: "power2.out", duration: 0.5 },
+          { width: "0%", ease: "power2.out" },
           "<"
         )
         .fromTo(
@@ -266,7 +266,7 @@ const Home = () => {
         .fromTo(
           cover6.current,
           { width: "100%" },
-          { width: "0%", ease: "power2.out", duration: 0.5 },
+          { width: "0%", ease: "power2.out" },
           "<"
         )
         .fromTo(

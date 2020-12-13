@@ -9,6 +9,12 @@ header {
           box-sizing: border-box;
 }
 
+@media (max-width: 420px) {
+  header {
+    padding: 20px 6.25%;
+  }
+}
+
 header .wrap {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -25,6 +31,12 @@ header .name {
   transition: 0.2s;
   text-decoration: none;
   color: white;
+}
+
+@media (max-width: 420px) {
+  header .name {
+    font-size: 1rem;
+  }
 }
 
 header .name:hover {
@@ -101,6 +113,13 @@ header .navList li {
   overflow: hidden;
 }
 
+@media (max-width: 420px) {
+  header .navList li {
+    padding: 0;
+    margin-top: 3.2rem;
+  }
+}
+
 header .navList a {
   display: inline-block;
   color: #fff;
@@ -114,6 +133,19 @@ header .navList a {
           transform: translate3d(0, 100%, 0);
   -webkit-transition: 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s;
   transition: 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s;
+}
+
+@media (max-width: 800px) {
+  header .navList a {
+    font-size: 6rem;
+  }
+}
+
+@media (max-width: 420px) {
+  header .navList a {
+    font-size: 3rem;
+    text-shadow: 0 3px 20px rgba(2, 11, 22, 0.2);
+  }
 }
 
 li {
@@ -131,6 +163,12 @@ header .icons {
   margin-right: 3rem;
   margin-left: auto;
   color: white;
+}
+
+@media (max-width: 420px) {
+  header .icons {
+    visibility: hidden;
+  }
 }
 
 header .icons a {
@@ -160,6 +198,13 @@ header .menuIcon {
   background: none;
   border: none;
   outline: none;
+}
+
+@media (max-width: 420px) {
+  header .menuIcon {
+    width: 25px;
+    height: 15px;
+  }
 }
 
 header .menuIcon:after {
@@ -196,6 +241,13 @@ header .menuIconOpen {
   outline: none;
 }
 
+@media (max-width: 420px) {
+  header .menuIconOpen {
+    width: 25px;
+    height: 15px;
+  }
+}
+
 header .menuIconOpen:before {
   bottom: 50%;
   content: "";
@@ -222,5 +274,26 @@ header .menuIconOpen:after {
   transition: 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
   -webkit-transform: rotate(45deg) translate3d(0, -50%, 0);
           transform: rotate(45deg) translate3d(0, -50%, 0);
+}
+
+.smIcons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+  display: none;
+}
+
+@media (max-width: 420px) {
+  .smIcons {
+    display: block;
+  }
+}
+
+.smIcons a {
+  margin: 0 15px 0 15px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  color: inherit;
 }
 /*# sourceMappingURL=header.module.css.map */

@@ -72,6 +72,20 @@ const Header = (props, ref) => {
               CONTACT
             </Link>
           </li>
+          <li className={styles.smIcons}>
+            <a href="https://github.com/saadrana">
+              <FontAwesomeIcon
+                icon={["fab", "github"]}
+                className={styles.icon}
+              />
+            </a>
+            <a href="https://github.com/saadrana">
+              <FontAwesomeIcon
+                icon={["fab", "linkedin"]}
+                className={styles.icon}
+              />
+            </a>
+          </li>
         </ul>
       </nav>
     </header>

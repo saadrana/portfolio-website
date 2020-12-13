@@ -1,4 +1,25 @@
 $back-color: #191624;
+$tablet: 800px;
+$mobile: 420px;
+$preTablet: 1250px;
+
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin preTablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
 
 .scrollDown {
   position: fixed;
@@ -13,6 +34,13 @@ $back-color: #191624;
   transform: translateY(0%);
   color: white;
   cursor: default;
+
+  @include mobile {
+    left: auto;
+    right: 6.25%;
+    font-size: 0.6rem;
+    bottom: 50px;
+  }
 }
 
 .scrollDown::after {
@@ -37,26 +65,65 @@ $back-color: #191624;
   z-index: -200;
 }
 
-:global(#fp-nav) ul li {
-  height: 3px;
-  margin: 0 0 40px;
+:global(#fp-nav) ul {
+  margin: 0;
+  padding: 0;
 
-  & a {
-    width: 24px;
-    height: 100%;
-    background: #fff;
-    transition: 0.3s;
-  }
-  & span {
-    display: none;
+  @include preTablet {
+    display: flex;
+    align-items: flex-end;
   }
 
-  & :global(a.active) {
-    width: 45px;
-  }
+  & li {
+    height: 3px;
+    margin: 0 0 40px;
 
-  &:last-child {
-    margin-bottom: 0;
+    @include preTablet {
+      height: auto;
+      margin: 0 28px;
+    }
+
+    @include mobile {
+      margin: 0 12px;
+    }
+
+    & a {
+      width: 24px;
+      height: 100%;
+      background: #fff;
+      transition: 0.3s;
+
+      @include preTablet {
+        width: 3px;
+        height: 24px;
+      }
+
+      @include mobile() {
+        width: 2px;
+        height: 16px;
+      }
+    }
+    & span {
+      display: none;
+    }
+
+    & :global(a.active) {
+      width: 45px;
+
+      @include preTablet {
+        width: 3px;
+        height: 40px;
+      }
+
+      @include mobile {
+        width: 2px;
+        height: 32px;
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -66,6 +133,18 @@ $back-color: #191624;
   margin: 0;
   transform: translate3d(0, -50%, 0);
   overflow: hidden;
+
+  @include preTablet {
+    width: auto;
+    top: auto;
+    left: 50% !important;
+    bottom: 32px;
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  @include mobile {
+    bottom: 20px;
+  }
 }
 
 .title {
@@ -77,6 +156,18 @@ $back-color: #191624;
   z-index: 200;
   margin-left: 12%;
 
+  @include tablet {
+    margin-left: 40px;
+  }
+
+  @include mobile {
+    margin: 0 6.25%;
+    width: 87.5%;
+    top: 55%;
+    transform: translate3d(0, 0, 0);
+    bottom: 8rem;
+  }
+
   & .mainText {
     font-size: 6rem;
     line-height: 1;
@@ -85,6 +176,16 @@ $back-color: #191624;
     font-family: Montserrat;
     font-weight: normal;
     text-shadow: 0 10px 30px rgba(2, 11, 22, 0.5);
+
+    @include tablet {
+      font-size: 5rem;
+    }
+
+    @include mobile {
+      font-size: 3.5rem;
+      margin-bottom: 0.8rem;
+      text-shadow: 0 3px 10px rgba(2, 11, 22, 0.5);
+    }
   }
 
   & .sideText {
@@ -93,6 +194,60 @@ $back-color: #191624;
     font-size: 1.2rem;
     line-height: 1.5;
     letter-spacing: 0.1em;
+
+    @include tablet {
+      font-size: 1rem;
+    }
+
+    @include mobile {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.border {
+  display: inline-block;
+  margin-bottom: 2rem;
+
+  @include mobile {
+    margin-bottom: 0.8rem;
+  }
+
+  & span {
+    display: block;
+    width: 88px;
+    height: 4px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #e52e71, #ff8a00);
+
+    @include tablet {
+      width: 70px;
+    }
+
+    @include mobile {
+      width: 44px;
+      height: 2px;
+    }
+
+    &:first-child {
+      margin-bottom: 0.7rem;
+
+      @include mobile {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    &:last-child {
+      margin-left: 54px;
+
+      @include tablet {
+        margin-left: 43px;
+      }
+
+      @include mobile {
+        margin-left: 27px;
+      }
+    }
   }
 }
 
@@ -107,6 +262,20 @@ $back-color: #191624;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @include tablet {
+    width: 100vw;
+    height: 100vw;
+    left: 23%;
+  }
+
+  @include mobile {
+    width: 165vw;
+    height: 165vw;
+    left: 50%;
+    bottom: auto;
+    transform: translate3d(-50%, 0, 0);
+  }
 
   & .scene {
     position: relative;
@@ -137,6 +306,15 @@ $back-color: #191624;
           font-family: Montserrat;
           font-weight: 700;
           height: auto;
+
+          @include tablet {
+            font-size: 3rem;
+          }
+
+          @include mobile {
+            font-size: 1.8rem;
+            text-shadow: 0 4px 6px rgba(2, 11, 22, 0.2);
+          }
         }
       }
     }
@@ -206,27 +384,6 @@ $back-color: #191624;
   }
 }
 
-.border {
-  display: inline-block;
-  margin-bottom: 2rem;
-
-  & span {
-    display: block;
-    width: 88px;
-    height: 4px;
-    border-radius: 5px;
-    background: linear-gradient(90deg, #e52e71, #ff8a00);
-
-    &:first-child {
-      margin-bottom: 0.7rem;
-    }
-
-    &:last-child {
-      margin-left: 43px;
-    }
-  }
-}
-
 .curtain {
   position: fixed;
   top: 0;
@@ -256,6 +413,16 @@ $back-color: #191624;
   top: 0;
   left: 30%;
   z-index: -100;
+
+  @include tablet {
+    width: 100vw;
+    left: 23%;
+    top: -25%;
+  }
+
+  @include mobile {
+    left: 0;
+  }
 
   & .layer {
     width: 100%;
@@ -295,6 +462,17 @@ p {
   box-shadow: rgba(0, 0, 0, 0.6) 0px 80px 140px -40px;
   padding: 0;
 
+  @include tablet {
+    margin-right: 40px;
+  }
+
+  @include mobile {
+    width: 80%;
+    height: 47%;
+    margin: 0 10%;
+    top: -15%;
+  }
+
   & .imageOver {
     width: 100%;
     height: 100%;
@@ -323,6 +501,15 @@ p {
     color: rgb(255, 255, 255);
     font-family: PressStart2P;
 
+    @include tablet {
+      font-size: 5rem;
+      right: -5%;
+    }
+
+    @include mobile {
+      display: none;
+    }
+
     & p {
       line-height: 1.1;
       text-shadow: rgba(2, 11, 22, 0.5) 0px 10px 30px;
@@ -332,6 +519,15 @@ p {
 
 .btnWrap {
   margin-top: 1.6rem;
+
+  @include tablet {
+    margin-top: 0.8rem;
+  }
+
+  @include mobile {
+    text-align: center;
+    margin-top: 0.7rem;
+  }
 
   & .btn {
     display: inline-block;
@@ -346,6 +542,15 @@ p {
     letter-spacing: 0.1em;
     transition: 0.2s;
 
+    @include tablet {
+      font-size: 1rem;
+      padding: 13px 24px;
+    }
+
+    @include mobile {
+      font-size: 0.8rem;
+    }
+
     &:hover {
       transform: translateY(-3px);
       transition: 0.2s;
@@ -356,12 +561,25 @@ p {
 .title li {
   margin-bottom: 1.6rem;
 
+  @include mobile {
+    margin-bottom: 0.8rem;
+    line-height: 1.1;
+  }
+
   & a {
     color: #fff;
     font-size: 1.2rem;
     line-height: 1.5;
     letter-spacing: 0.1em;
     transition: 0.2s;
+
+    @include tablet {
+      font-size: 1rem;
+    }
+
+    @include mobile {
+      font-size: 0.8rem;
+    }
 
     &:hover {
       color: rgb(185, 185, 185);
@@ -381,6 +599,14 @@ p {
 
 .icon {
   font-size: 28px;
+
+  @include tablet {
+    font-size: 1.2rem;
+  }
+
+  @include mobile {
+    font-size: 1.2rem;
+  }
 }
 
 ul {
