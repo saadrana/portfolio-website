@@ -10,7 +10,7 @@ $preTablet: 1250px;
 }
 
 @mixin preTablet {
-  @media (max-width: #{$tablet}) {
+  @media (max-width: #{$preTablet}) {
     @content;
   }
 }

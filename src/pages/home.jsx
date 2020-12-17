@@ -1,5 +1,4 @@
 import fullpage from "fullpage.js";
-import { useHistory } from "react-router-dom";
 
 import { useEffect, useRef, useLayoutEffect } from "react";
 import styles from "./css/home.module.css";
@@ -17,7 +16,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 
 library.add(fab);
 
-const Home = () => {
+const Home = (props) => {
   const fullPage = useRef();
   const scene = useRef();
   const stars = useRef();
@@ -37,7 +36,7 @@ const Home = () => {
   const comet2 = useRef();
   const comet3 = useRef();
   const comet4 = useRef();
-  const comet5 = useRef();
+  //const comet5 = useRef();
 
   const num1 = useRef();
   const num2 = useRef();
@@ -73,23 +72,32 @@ const Home = () => {
   const red8 = useRef();
   const contactBtn = useRef();
 
-  let history = useHistory();
-
   const aboutClick = () => {
-    let tl = gsap.timeline({
-      onComplete: () => history.push("/about"),
-      defaults: { duration: 0.5 },
-    });
-    tl.to(img2.current, {
-      height: "100vh",
-      width: "61%",
-      margin: "0 0 0 auto",
-      boxShadow: "none",
-    })
-      .to(num2.current, { translateY: 120 }, "<")
-      .to(aboutBtn.current, { translateY: 100 }, "<")
-      .to(sky.current, { background: "#100e17" }, "<")
-      .to(stars.current, { visibility: "hidden" }, "<");
+    if (window.innerWidth > 420) {
+      let tl = gsap.timeline({
+        onComplete: () =>
+          props.history.push("/aboutPage", {
+            from: "/",
+            hash: "#about",
+          }),
+        defaults: { duration: 0.5 },
+      });
+      tl.to(img2.current, {
+        height: "100vh",
+        width: "61%",
+        margin: "0 0 0 auto",
+        boxShadow: "none",
+      })
+        .to(num2.current, { translateY: 120 }, "<")
+        .to(aboutBtn.current, { translateY: 100 }, "<")
+        .to(sky.current, { background: "#100e17" }, "<")
+        .to(stars.current, { visibility: "hidden" }, "<");
+    } else {
+      props.history.push("/about", {
+        from: "/",
+        hash: "#about",
+      });
+    }
   };
 
   const transition = (origin, destination, direction) => {
@@ -129,13 +137,7 @@ const Home = () => {
 
           "<"
         )
-        .fromTo(
-          comet5.current,
-          { translateX: 0, translateY: 0 },
-          { translateX: -1000, translateY: -1000 },
-
-          "<"
-        )
+        //.fromTo(comet5.current,{ translateX: 0, translateY: 0 },{ translateX: -1000, translateY: -1000 },"<")
         .fromTo(scroll.current, { translateY: 0 }, { translateY: 200 }, "<");
     }
 
@@ -176,12 +178,7 @@ const Home = () => {
           { translateX: 0, translateY: 0 },
           "<"
         )
-        .fromTo(
-          comet5.current,
-          { translateX: -1000, translateY: -1000 },
-          { translateX: 0, translateY: 0 },
-          "<"
-        )
+        //.fromTo(comet5.current,{ translateX: -1000, translateY: -1000 },{ translateX: 0, translateY: 0 },"<")
         .fromTo(scroll.current, { translateY: 200 }, { translateY: 0 }, "<");
     } else if (destination.anchor === "projects") {
       let tl = gsap.timeline({ defaults: { duration: 0.9 } });
@@ -284,6 +281,7 @@ const Home = () => {
   useLayoutEffect(() => {
     const fullpage_api = fullpage(fullPage.current, {
       //options here
+      licenseKey: "DEED342D-74B7400C-9BC350E4-4E532CCE",
       autoScrolling: true,
       scrollingSpeed: 1100,
       navigation: true,
@@ -296,23 +294,29 @@ const Home = () => {
       },
     });
 
-    let tl = gsap.timeline({ defaults: { duration: 0.9 } });
-    tl.from(loader.current, { y: 0, ease: "none", duration: 0.6 }, 0.3)
-      .from(name.current, { translateX: -500 }, ">-0.3")
-      .from(red1.current, { translateX: -500 }, "<")
-      .from(red2.current, { translateX: -800 }, "<")
-      .from(titles.current, { translateX: -500 }, "<+0.2")
-      .from(portfolio.current, { translateX: 1100 }, "<")
-      .from(moon.current, { translateX: 1000 }, "<")
-      .from(comet1.current, { translateX: -500, translateY: -500 }, "<")
-      .from(comet2.current, { translateX: -500, translateY: -500 }, "<")
-      .from(comet3.current, { translateX: -600, translateY: -600 }, "<")
-      .from(comet4.current, { translateX: -1000, translateY: -1000 }, "<")
-      .from(comet5.current, { translateX: -1000, translateY: -1000 }, "<");
+    if (
+      props.location.state === undefined ||
+      props.history.location.state.hash !== "#menu"
+    ) {
+      let tl = gsap.timeline({ defaults: { duration: 0.9 } });
+      tl.from(loader.current, { y: 0, ease: "none", duration: 0.6 }, 0.3)
+        .from(name.current, { translateX: -500 }, ">-0.3")
+        .from(red1.current, { translateX: -500 }, "<")
+        .from(red2.current, { translateX: -800 }, "<")
+        .from(titles.current, { translateX: -500 }, "<+0.2")
+        .from(portfolio.current, { translateX: 1100 }, "<")
+        .from(moon.current, { translateX: 1000 }, "<")
+        .from(comet1.current, { translateX: -500, translateY: -500 }, "<")
+        .from(comet2.current, { translateX: -500, translateY: -500 }, "<")
+        .from(comet3.current, { translateX: -600, translateY: -600 }, "<")
+        .from(comet4.current, { translateX: -1000, translateY: -1000 }, "<");
+      //.from(comet5.current, { translateX: -1000, translateY: -1000 }, "<");
+    }
 
     return () => {
       fullpage_api.destroy("all");
     };
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -385,6 +389,7 @@ const Home = () => {
                   ref={comet4}
                 ></img>
               </div>
+              {/*
               <div className={styles.comets} data-depth="0.3">
                 <img
                   src={cometImg}
@@ -393,6 +398,7 @@ const Home = () => {
                   ref={comet5}
                 ></img>
               </div>
+              */}
             </div>
           </div>
         </section>

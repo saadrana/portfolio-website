@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState, useImperativeHandle, forwardRef, useRef } from "react";
 import styles from "./css/header.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,6 +13,20 @@ const Header = (props, ref) => {
   };
   const closeMenu = () => {
     setOpen(false);
+  };
+
+  const home = () => {
+    closeMenu();
+    if (location.pathname === "/") {
+      window.fullpage_api.moveTo(1, 0);
+    }
+  };
+
+  const contact = () => {
+    closeMenu();
+    if (location.pathname === "/") {
+      window.fullpage_api.moveTo(4, 0);
+    }
   };
 
   const header = useRef();
@@ -30,10 +44,20 @@ const Header = (props, ref) => {
     []
   );
 
+  let location = useLocation();
+
   return (
     <header ref={header}>
       <div className={styles.wrap}>
-        <Link to="/" className={styles.name}>
+        <Link
+          to={{
+            pathname: "/",
+            hash: "#home",
+            state: { from: location.pathname, hash: "#menu" },
+          }}
+          onClick={home}
+          className={styles.name}
+        >
           Saad Rana{" "}
         </Link>
         <div className={styles.icons}>
@@ -55,7 +79,14 @@ const Header = (props, ref) => {
       <nav className={`${open ? styles.globalNavOpen : styles.globalNav}`}>
         <ul className={styles.navList}>
           <li>
-            <Link to="/#home" onClick={closeMenu}>
+            <Link
+              to={{
+                pathname: "/",
+                hash: "#home",
+                state: { from: location.pathname, hash: "#menu" },
+              }}
+              onClick={home}
+            >
               HOME
             </Link>
           </li>
@@ -63,12 +94,25 @@ const Header = (props, ref) => {
             <a href="https://github.com/saadrana">PROJECTS</a>
           </li>
           <li>
-            <Link to="/about" onClick={closeMenu}>
+            <Link
+              to={{
+                pathname: "/aboutPage",
+                state: { from: location.pathname, hash: "#menu" },
+              }}
+              onClick={closeMenu}
+            >
               ABOUT ME
             </Link>
           </li>
           <li>
-            <Link to="/#contact" onClick={closeMenu}>
+            <Link
+              to={{
+                pathname: "/",
+                hash: "#contact",
+                state: { from: location.pathname, hash: "#menu" },
+              }}
+              onClick={contact}
+            >
               CONTACT
             </Link>
           </li>

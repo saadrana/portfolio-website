@@ -10,7 +10,7 @@ $preTablet: 1250px;
 }
 
 @mixin preTablet {
-  @media (max-width: #{$tablet}) {
+  @media (max-width: #{$preTablet}) {
     @content;
   }
 }
@@ -163,7 +163,7 @@ $preTablet: 1250px;
   @include mobile {
     margin: 0 6.25%;
     width: 87.5%;
-    top: 55%;
+    top: auto;
     transform: translate3d(0, 0, 0);
     bottom: 8rem;
   }
@@ -273,6 +273,7 @@ $preTablet: 1250px;
     width: 165vw;
     height: 165vw;
     left: 50%;
+    top: -8rem;
     bottom: auto;
     transform: translate3d(-50%, 0, 0);
   }
@@ -345,8 +346,8 @@ $preTablet: 1250px;
         vertical-align: middle;
         width: 30%;
         position: absolute;
-        top: -20%;
-        left: -10%;
+        top: -5%;
+        left: -18%;
       }
       &2 {
         height: auto;
@@ -372,14 +373,16 @@ $preTablet: 1250px;
         top: 65%;
         left: 50%;
       }
+      /*
       &5 {
         height: auto;
         vertical-align: middle;
         width: 30%;
         position: absolute;
-        top: -25%;
+        top: 5%;
         left: -70%;
       }
+      */
     }
   }
 }
@@ -417,7 +420,7 @@ $preTablet: 1250px;
   @include tablet {
     width: 100vw;
     left: 23%;
-    top: -25%;
+    top: -20%;
   }
 
   @include mobile {

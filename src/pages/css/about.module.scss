@@ -1,5 +1,16 @@
+$back-color: #191624;
+$tablet: 800px;
+$mobile: 420px;
+$preTablet: 1250px;
+
 @mixin tablet {
   @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin preTablet {
+  @media (max-width: #{$preTablet}) {
     @content;
   }
 }
@@ -17,11 +28,21 @@
   color: #fff;
   background: #100e17;
 
+  @include mobile {
+    display: block;
+  }
+
   &Inner {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
+
+    @include mobile {
+      display: block;
+      max-height: 761px;
+      position: relative;
+    }
   }
 }
 
@@ -34,6 +55,18 @@
   z-index: 200;
   margin-left: 12%;
 
+  @include tablet {
+    margin-left: 40px;
+  }
+
+  @include mobile {
+    margin: 0 6.25%;
+    width: 87.5%;
+    top: auto;
+    transform: translate3d(0, 0, 0);
+    bottom: 8rem;
+  }
+
   & .mainText {
     font-size: 6rem;
     line-height: 1;
@@ -42,6 +75,16 @@
     font-family: Montserrat;
     font-weight: normal;
     text-shadow: 0 10px 30px rgba(2, 11, 22, 0.5);
+
+    @include tablet {
+      font-size: 5rem;
+    }
+
+    @include mobile {
+      font-size: 3.5rem;
+      margin-bottom: 0.8rem;
+      text-shadow: 0 3px 10px rgba(2, 11, 22, 0.5);
+    }
   }
 
   & .sideText {
@@ -50,6 +93,14 @@
     font-size: 1.2rem;
     line-height: 1.5;
     letter-spacing: 0.1em;
+
+    @include tablet {
+      font-size: 1rem;
+    }
+
+    @include mobile {
+      font-size: 0.8rem;
+    }
   }
 }
 
@@ -60,6 +111,19 @@
   height: 100vh;
   margin: 0 0 0 auto;
   box-shadow: none;
+
+  @include mobile {
+    width: 100%;
+    height: 65%;
+    top: auto;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  width: 100%;
 }
 
 .imgAbout {
@@ -72,6 +136,10 @@
   display: inline-block;
   margin-bottom: 2rem;
 
+  @include mobile {
+    margin-bottom: 0.8rem;
+  }
+
   & span {
     display: block;
     width: 88px;
@@ -79,12 +147,33 @@
     border-radius: 5px;
     background: linear-gradient(90deg, #e52e71, #ff8a00);
 
+    @include tablet {
+      width: 70px;
+    }
+
+    @include mobile {
+      width: 44px;
+      height: 2px;
+    }
+
     &:first-child {
       margin-bottom: 0.7rem;
+
+      @include mobile {
+        margin-bottom: 0.5rem;
+      }
     }
 
     &:last-child {
-      margin-left: 43px;
+      margin-left: 54px;
+
+      @include tablet {
+        margin-left: 43px;
+      }
+
+      @include mobile {
+        margin-left: 27px;
+      }
     }
   }
 }
@@ -102,6 +191,13 @@
   transform: translateY(0%);
   color: white;
   cursor: default;
+
+  @include mobile {
+    left: auto;
+    right: 6.25%;
+    font-size: 0.6rem;
+    bottom: 50px;
+  }
 }
 
 .scrollDown::after {
@@ -125,6 +221,10 @@
   z-index: 100;
   background: url(../../images/arrow.svg) no-repeat center;
 
+  @include mobile {
+    width: 32px;
+  }
+
   &Wrap {
     position: fixed;
     top: 120px;
@@ -133,6 +233,11 @@
     height: 40px;
     width: 60px;
     transition: 0.6s;
+
+    @include mobile {
+      top: 60px;
+      left: 6.25%;
+    }
 
     &:hover {
       left: 30px;
@@ -149,6 +254,10 @@
   position: relative;
   z-index: 200;
 
+  @include mobile {
+    padding: 3rem 0;
+  }
+
   & a {
     display: block;
     font-size: 1.5rem;
@@ -156,18 +265,32 @@
     color: #fff;
     letter-spacing: 0.2em;
     transform: 0.3s;
+
+    @include mobile {
+      font-size: 0.8rem;
+    }
   }
 
   & a:first-child {
     margin-bottom: 2.4rem;
+
+    @include mobile {
+      margin-bottom: 0.8rem;
+    }
   }
 }
 
 .wrapper {
-  margin-top: 10rem;
-  margin-bottom: 20rem;
+  margin-top: 8rem;
+  margin-bottom: 8rem;
   position: relative;
   z-index: 200;
+
+  @include mobile {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+    margin-bottom: 10rem;
+  }
 }
 
 .container {
@@ -176,60 +299,25 @@
 
 .text {
   position: relative;
-  display: flex;
-  align-items: center;
-  padding-left: 138px;
-  margin-top: 8rem;
+  display: grid;
+  grid-template-columns: 1fr 3fr 6fr;
+  column-gap: 80px;
+  justify-items: center;
 
-  &Top {
-    align-items: flex-start;
+  @include tablet {
+    margin-top: 3rem;
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: auto 1fr;
+    column-gap: 30px;
   }
+
+  @include mobile {
+    grid-template-columns: 80px 1fr;
+    justify-items: start;
+  }
+
   &Mid {
     margin-bottom: 14.4rem;
-  }
-}
-
-.headingNum {
-  position: absolute;
-  font-family: PressStart2P;
-  left: 0;
-  font-size: 2.5rem;
-  background-image: linear-gradient(90deg, #e52e71, #ff8a00);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-  padding-left: 6.2rem;
-  padding-right: 3.2rem;
-  line-height: 1.1;
-
-  &:after {
-    content: "";
-    width: 4.8rem;
-    height: 2px;
-    background: #100e17;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-  }
-}
-
-.textWrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-right: 10%;
-  padding-left: 10%;
-  box-sizing: content-box;
-  max-width: 1200px;
-  width: 100%;
-  margin: auto;
-
-  &Top {
-    align-items: flex-start;
   }
 }
 
@@ -237,32 +325,105 @@
   font-size: 2.5rem;
   color: #100e17;
   letter-spacing: 0.2em;
-  margin-right: 3.2rem;
+
+  @include tablet {
+    padding-top: 0;
+    margin-right: 0;
+  }
+
+  @include mobile {
+    font-size: 1.6rem;
+  }
 
   &Top {
     padding-top: 0;
   }
 }
 
+.headingNum {
+  left: 0;
+  font-family: PressStart2P;
+  font-size: 2.5rem;
+  background-image: linear-gradient(90deg, #e52e71, #ff8a00);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  padding-left: 4.7rem;
+  padding-top: 5px;
+  line-height: 1.1;
+
+  @include mobile {
+    padding-left: 2.4rem;
+    font-size: 1.3rem;
+  }
+
+  &:after {
+    content: "";
+    width: 4rem;
+    height: 2px;
+    background: #100e17;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin-top: 1.5rem;
+
+    @include mobile {
+      width: 1.8rem;
+      margin-top: 0.8rem;
+    }
+  }
+}
+
 .who {
   &Wrap {
-    width: 50%;
+    width: 60%;
+    justify-self: start;
+
+    @include preTablet {
+      width: 80%;
+    }
+
+    @include tablet {
+      margin-top: 3rem;
+      grid-column: span 2;
+      padding-left: 10%;
+      padding-right: 10%;
+      justify-self: center;
+    }
   }
   &Name {
     color: #100e17;
     margin-bottom: 2.4rem;
+
+    @include mobile {
+      margin-bottom: 1.6rem;
+    }
   }
   &Eng {
     font-size: 1.5rem;
     letter-spacing: 0.3em;
     margin-bottom: 0.4rem;
+
+    @include mobile {
+      font-size: 1rem;
+    }
   }
 
   &Text {
     margin-bottom: 4rem;
+
+    @include mobile {
+      margin-bottom: 3.2rem;
+    }
   }
   &Image {
     box-shadow: 0px 63px 154px -20px rgba(7, 33, 66, 0.5);
+
+    @include mobile {
+      box-shadow: 0 33px 84px -20px rgba(7, 33, 66, 0.5);
+    }
   }
 }
 
@@ -278,12 +439,6 @@
   }
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  vertical-align: middle;
-  width: 100%;
-}
 p {
   line-height: 2;
   word-wrap: break-word;
@@ -292,6 +447,15 @@ p {
 
 .btnWrap {
   margin-top: 1.6rem;
+
+  @include tablet {
+    margin-top: 0.8rem;
+  }
+
+  @include mobile {
+    text-align: center;
+    margin-top: 0.7rem;
+  }
 
   & .btn {
     display: inline-block;
@@ -306,9 +470,29 @@ p {
     letter-spacing: 0.1em;
     transition: 0.2s;
 
+    @include tablet {
+      font-size: 1rem;
+      padding: 13px 24px;
+    }
+
+    @include mobile {
+      font-size: 0.8rem;
+    }
+
     &:hover {
       transform: translateY(-3px);
       transition: 0.2s;
     }
   }
+}
+
+.loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #100e17;
+  top: 0;
+  left: 0;
+  transform: translateY(-100%) translateZ(0px);
+  z-index: 99999;
 }

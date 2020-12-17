@@ -17,18 +17,13 @@ import Refs from "./global/Refs"
 const App = () => {
 
   const refs = useContext(Refs)
-
   return (
-    <Router>
+    <Router >
       <div className="App">
         <Header ref={refs.header}/>
         <Switch>
-          <Route path="/about">
-            <About/>
-          </Route>
-          <Route path="/">
-            <Home/>
-          </Route>
+          <Route path="/aboutPage" component={About} />
+          <Route path="/" component={Home} />
         </Switch>
       </div>
     </Router>

@@ -1,32 +1,61 @@
-import { useRef, useLayoutEffect, useEffect, useContext } from "react";
+import {
+  useRef,
+  useLayoutEffect,
+  useEffect,
+  useContext,
+  useCallback,
+} from "react";
 import styles from "./css/about.module.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Refs from "../global/Refs";
+import profilePic from "../images/N_286.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
   const scoutBtn = useRef();
-  const arrow = useRef();
+  const arrow = useCallback((node) => {
+    if (node !== null) {
+      arrow.current = node;
+    }
+  }, []);
   const scroll = useRef();
   const sec1 = useRef();
   const sec2 = useRef();
+  const loader = useRef();
 
   const refs = useContext(Refs);
 
+  let location = useLocation();
+
   useLayoutEffect(() => {
-    let tl = gsap.timeline({ defaults: { duration: 0.5 } });
-    tl.from(scoutBtn.current, { translateY: 200 })
-      .from(
-        arrow.current,
-        {
-          translateX: 200,
-        },
-        "<"
-      )
-      .from(scroll.current, { translateY: 200 }, "<");
+    if (location.state !== undefined) {
+      if (
+        window.innerWidth > 420 &&
+        location.state.from === "/" &&
+        location.state.hash === "#about"
+      ) {
+        let tl = gsap.timeline({ defaults: { duration: 0.5 } });
+        tl.from(scoutBtn.current, { translateY: 200 })
+          .from(
+            arrow.current,
+            {
+              translateX: 200,
+            },
+            "<"
+          )
+          .from(scroll.current, { translateY: 200 }, "<");
+      } else if (location.state.hash !== "#menu") {
+        let tl = gsap.timeline();
+        tl.from(loader.current, { y: 0, ease: "none", duration: 0.6 }, 0.3);
+      }
+    } else {
+      let tl = gsap.timeline();
+      tl.from(loader.current, { y: 0, ease: "none", duration: 0.6 }, 0.3);
+    }
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -51,7 +80,15 @@ const About = () => {
       <div className={styles.topPage} ref={sec1}>
         <div className={styles.topPageInner}>
           <div className={styles.backArrowWrap}>
-            <Link className={styles.backArrow} to="/#about" ref={arrow}></Link>
+            <Link
+              className={styles.backArrow}
+              to={{
+                pathname: "/",
+                hash: "#about",
+                state: { from: location.pathname, hash: location.hash },
+              }}
+              ref={arrow}
+            ></Link>
           </div>
           <p className={styles.scrollDown} ref={scroll}>
             SCROLLDOWN
@@ -64,7 +101,9 @@ const About = () => {
             </div>
             <p className={styles.sideText}>Life through my lens</p>
             <div className={styles.btnWrap} ref={scoutBtn}>
-              <button className={styles.btn}>Show me more</button>
+              <a href="https://twitter.com/SaadURana" className={styles.btn}>
+                My Twitter
+              </a>
             </div>
           </div>
           <div className={`${styles.image} ${styles.imgAbout}`}></div>
@@ -74,43 +113,53 @@ const About = () => {
         <div className={styles.containerTop}>
           <div className={`${styles.text} ${styles.textTop}`}>
             <p className={styles.headingNum}>01</p>
-            <div
-              className={`${styles.textWrap} ${styles.textWrapTop} ${styles.content}`}
-            >
-              <h2 className={`${styles.heading} ${styles.headingTop}`}>
-                WHO I AM
-              </h2>
-              <div className={styles.whoWrap}>
-                <div className={styles.whoName}>
-                  <h3 className={styles.whoEng}>Saad Rana</h3>
-                </div>
-                <p className={styles.whoText}></p>
-                <div className={styles.whoImage}></div>
+            <h2 className={`${styles.heading} ${styles.headingTop}`}>
+              WHO I AM
+            </h2>
+            <div className={styles.whoWrap}>
+              <div className={styles.whoName}>
+                <h3 className={styles.whoEng}>Saad Rana</h3>
+              </div>
+              <p className={styles.whoText}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+                non dictum neque. Nunc vel euismod risus. In id dictum sapien.
+                Maecenas mauris arcu, mattis vel volutpat ac, cursus ut mauris.
+                Donec non tempus nunc, id convallis orci. Suspendisse sem est,
+                dictum feugiat viverra eget, facilisis in felis. Mauris tempor
+                ipsum quis vestibulum aliquam. Vivamus viverra urna rhoncus
+                ipsum tempor tincidunt. Nam
+              </p>
+              <div className={styles.whoImage}>
+                <img src={profilePic} alt="Saad Rana"></img>
               </div>
             </div>
           </div>
         </div>
-        <div className={styles.container}>
-          <div className={`${styles.text} ${styles.textMid}`}>
-            <p className={styles.headingNum}>02</p>
-            <div className={`${styles.textWrap} ${styles.content}`}>
-              <h2 className={styles.heading}>PASSION</h2>
+        {/*
+          <div className={styles.container}>
+            <div className={`${styles.text} ${styles.textMid}`}>
+              <p className={styles.headingNum}>02</p>
+              <div className={`${styles.textWrap} ${styles.content}`}>
+                <h2 className={styles.heading}>PASSION</h2>
+              </div>
+            </div>
+            <div className={styles.content}>
+              <ul className={styles.passionList}>
+                <li className={styles.passionItem}>
+                  <div className={styles.passionImage}></div>
+                  <h3 className={styles.subHeading}></h3>
+                  <p className={styles.passionText}></p>
+                </li>
+              </ul>
             </div>
           </div>
-          <div className={styles.content}>
-            <ul className={styles.passionList}>
-              <li className={styles.passionItem}>
-                <div className={styles.passionImage}></div>
-                <h3 className={styles.subHeading}>Impact</h3>
-                <p className={styles.passionText}></p>
-              </li>
-            </ul>
-          </div>
-        </div>
+        */}
       </section>
+
       <div className={styles.footer}>
         <a href="mailto:saad-rana@outlook.com">saad-rana@outlook.com</a>
       </div>
+      <div className={styles.loader} ref={loader}></div>
     </main>
   );
 };

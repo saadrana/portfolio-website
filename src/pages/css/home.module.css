@@ -52,7 +52,7 @@
   padding: 0;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1250px) {
   :global(#fp-nav) ul {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -68,7 +68,7 @@
   margin: 0 0 40px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1250px) {
   :global(#fp-nav) ul li {
     height: auto;
     margin: 0 28px;
@@ -89,7 +89,7 @@
   transition: 0.3s;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1250px) {
   :global(#fp-nav) ul li a {
     width: 3px;
     height: 24px;
@@ -111,7 +111,7 @@
   width: 45px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1250px) {
   :global(#fp-nav) ul li :global(a.active) {
     width: 3px;
     height: 40px;
@@ -138,7 +138,7 @@
   overflow: hidden;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1250px) {
   :global(#fp-nav) {
     width: auto;
     top: auto;
@@ -176,7 +176,7 @@
   .title {
     margin: 0 6.25%;
     width: 87.5%;
-    top: 55%;
+    top: auto;
     -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
     bottom: 8rem;
@@ -318,6 +318,7 @@
     width: 165vw;
     height: 165vw;
     left: 50%;
+    top: -8rem;
     bottom: auto;
     -webkit-transform: translate3d(-50%, 0, 0);
             transform: translate3d(-50%, 0, 0);
@@ -394,13 +395,26 @@
   z-index: 200;
 }
 
+.sideGraphic .comets .comet {
+  /*
+      &5 {
+        height: auto;
+        vertical-align: middle;
+        width: 30%;
+        position: absolute;
+        top: 5%;
+        left: -70%;
+      }
+      */
+}
+
 .sideGraphic .comets .comet1 {
   height: auto;
   vertical-align: middle;
   width: 30%;
   position: absolute;
-  top: -20%;
-  left: -10%;
+  top: -5%;
+  left: -18%;
 }
 
 .sideGraphic .comets .comet2 {
@@ -428,15 +442,6 @@
   position: absolute;
   top: 65%;
   left: 50%;
-}
-
-.sideGraphic .comets .comet5 {
-  height: auto;
-  vertical-align: middle;
-  width: 30%;
-  position: absolute;
-  top: -25%;
-  left: -70%;
 }
 
 .curtain {
@@ -476,7 +481,7 @@
   .stars {
     width: 100vw;
     left: 23%;
-    top: -25%;
+    top: -20%;
   }
 }
 
