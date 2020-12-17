@@ -93,7 +93,7 @@ const Home = (props) => {
         .to(sky.current, { background: "#100e17" }, "<")
         .to(stars.current, { visibility: "hidden" }, "<");
     } else {
-      props.history.push("/about", {
+      props.history.push("/aboutPage", {
         from: "/",
         hash: "#about",
       });
