@@ -120,15 +120,24 @@ const About = () => {
               <div className={styles.whoName}>
                 <h3 className={styles.whoEng}>Saad Rana</h3>
               </div>
-              <p className={styles.whoText}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-                non dictum neque. Nunc vel euismod risus. In id dictum sapien.
-                Maecenas mauris arcu, mattis vel volutpat ac, cursus ut mauris.
-                Donec non tempus nunc, id convallis orci. Suspendisse sem est,
-                dictum feugiat viverra eget, facilisis in felis. Mauris tempor
-                ipsum quis vestibulum aliquam. Vivamus viverra urna rhoncus
-                ipsum tempor tincidunt. Nam
-              </p>
+              <div className={styles.whoText}>
+                <p>
+                  Hi there! My name is Saad, and I am an aspiring Software
+                  Engineer. I recently graduated from the University of Oxford
+                  with a Masters degree in Engineering Science. In pursuit of
+                  how I can add value to peoples lives, I am currently exploring
+                  Front-End development and UX design. The challenge of creating
+                  an application that is not only efficient, but visually
+                  beautiful and a pleasure to use, is one I hope to tackle in
+                  the coming years.
+                </p>
+                <p>
+                  In my spare time I love to play video games such as Valorant
+                  and Genshin Impact. Working towards my dream gaming setup, RGB
+                  Everything!
+                </p>
+              </div>
+
               <div className={styles.whoImage}>
                 <img src={profilePic} alt="Saad Rana"></img>
               </div>

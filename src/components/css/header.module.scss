@@ -163,9 +163,17 @@ header .icons {
   }
 
   & a {
-    margin: 0 15px 0 15px;
+    margin: 0 20px 0 20px;
     transition: 0.2s;
     color: inherit;
+  }
+
+  &a:first-child {
+    margin: 0 20px 0 0;
+  }
+
+  & a:last-child {
+    margin: 0 0 0 20px;
   }
 }
 

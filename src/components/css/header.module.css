@@ -172,10 +172,18 @@ header .icons {
 }
 
 header .icons a {
-  margin: 0 15px 0 15px;
+  margin: 0 20px 0 20px;
   -webkit-transition: 0.2s;
   transition: 0.2s;
   color: inherit;
+}
+
+header .iconsa:first-child {
+  margin: 0 20px 0 0;
+}
+
+header .icons a:last-child {
+  margin: 0 0 0 20px;
 }
 
 header .icon {
