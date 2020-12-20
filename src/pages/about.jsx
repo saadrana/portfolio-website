@@ -122,14 +122,14 @@ const About = () => {
               </div>
               <div className={styles.whoText}>
                 <p>
-                  Hi there! My name is Saad, and I am an aspiring Software
-                  Engineer. I recently graduated from the University of Oxford
-                  with a Masters degree in Engineering Science. In pursuit of
-                  how I can add value to peoples lives, I am currently exploring
+                  Hi there! My name is Saad, and I am a Software Engineer. I
+                  recently graduated from the University of Oxford with a
+                  Masters degree in Engineering Science. In pursuit of how I can
+                  add value to other peoples lives, I am currently exploring
                   Front-End development and UX design. The challenge of creating
                   an application that is not only efficient, but visually
-                  beautiful and a pleasure to use, is one I hope to tackle in
-                  the coming years.
+                  beautiful and a pleasure to use is one I hope to tackle in the
+                  coming years.
                 </p>
                 <p>
                   In my spare time I love to play video games such as Valorant
