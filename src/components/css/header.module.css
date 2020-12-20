@@ -7,7 +7,7 @@ header {
   z-index: 1000;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  -webkit-transform: translate3d(0px, 0px, 0px);
+  -webkit-transform: translateZ(0);
 }
 
 @media (max-width: 420px) {
@@ -21,6 +21,7 @@ header .wrap {
   display: -ms-flexbox;
   display: flex;
   position: relative;
+  -webkit-transform: translateZ(0);
 }
 
 header .name {

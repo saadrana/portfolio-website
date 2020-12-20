@@ -29,7 +29,7 @@ header {
   padding: 40px 40px 10px;
   z-index: 1000;
   box-sizing: border-box;
-  -webkit-transform: translate3d(0px, 0px, 0px);
+  -webkit-transform: translateZ(0);
 
   @include mobile {
     padding: 20px 6.25%;
@@ -38,6 +38,7 @@ header {
 header .wrap {
   display: flex;
   position: relative;
+  -webkit-transform: translateZ(0);
 }
 
 header .name {
