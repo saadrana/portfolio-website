@@ -134,7 +134,8 @@ const About = () => {
                 <p>
                   In my spare time I love to play video games such as Valorant
                   and Genshin Impact. Working towards my dream gaming setup, RGB
-                  Everything!
+                  Everything! I love listening to music, and enjoy doing
+                  karaoke.
                 </p>
               </div>
 
