@@ -132,7 +132,7 @@ const About = () => {
                   coming years.
                 </p>
                 <p>
-                  In my spare time I love to play video games such as Valorant
+                  In my spare time I love to play video games such as VALORANT
                   and Genshin Impact. Working towards my dream gaming setup, RGB
                   Everything! I like listening to music, and enjoy doing
                   karaoke.

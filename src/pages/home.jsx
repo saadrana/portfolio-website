@@ -488,7 +488,7 @@ const Home = (props) => {
                       className={styles.icon}
                     />
                   </a>
-                  <a href="https://github.com/saadrana">
+                  <a href="https://www.linkedin.com/in/saad-rana/">
                     <FontAwesomeIcon
                       icon={["fab", "linkedin"]}
                       className={styles.icon}
