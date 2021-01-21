@@ -3,7 +3,7 @@ import { useLayoutEffect } from "react";
 
 const CV = () => {
   const openPDF = () => {
-    window.open(pdf);
+    window.open(pdf, "_self");
   };
 
   useLayoutEffect(() => {
