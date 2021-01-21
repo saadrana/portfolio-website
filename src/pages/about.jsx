@@ -10,7 +10,7 @@ import { Link, useLocation } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Refs from "../global/Refs";
-import profilePic from "../images/N_286.jpg";
+import profilePic from "../images/SaadRana.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 

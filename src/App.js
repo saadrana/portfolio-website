@@ -12,6 +12,7 @@ import Header from "./components/header"
 import Home from "./pages/home"
 import About from "./pages/about"
 import Refs from "./global/Refs"
+import CV from "./pages/cv"
 
 
 const App = () => {
@@ -22,7 +23,8 @@ const App = () => {
       <div className="App">
         <Header ref={refs.header}/>
         <Switch>
-          <Route path="/aboutPage" component={About} />
+          <Route path="/about-page" component={About} />
+          <Route path="/cv" component={CV}/>
           <Route path="/" component={Home} />
         </Switch>
       </div>

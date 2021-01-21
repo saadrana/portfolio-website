@@ -76,7 +76,7 @@ const Home = (props) => {
     if (window.innerWidth > 420) {
       let tl = gsap.timeline({
         onComplete: () =>
-          props.history.push("/aboutPage", {
+          props.history.push("/about-page", {
             from: "/",
             hash: "#about",
           }),

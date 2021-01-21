@@ -96,7 +96,7 @@ const Header = (props, ref) => {
           <li>
             <Link
               to={{
-                pathname: "/aboutPage",
+                pathname: "/about-page",
                 state: { from: location.pathname, hash: "#menu" },
               }}
               onClick={closeMenu}
